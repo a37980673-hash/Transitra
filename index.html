@@ -1,0 +1,493 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transitra | Seamless Mobility Redefined</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #10b981;
+            transition: width .3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Success message animation */
+        #notify-success {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="bus" class="text-emerald-500 w-8 h-8"></i>
+                    <span class="text-2xl font-bold tracking-tight text-slate-800">Transitra</span>
+                </div>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#about" class="nav-link text-slate-600 hover:text-emerald-600 transition">About</a>
+                    <a href="#solution" class="nav-link text-slate-600 hover:text-emerald-600 transition">Solution</a>
+                    <a href="#features" class="nav-link text-slate-600 hover:text-emerald-600 transition">Features</a>
+                    <a href="#contact" class="nav-link text-slate-600 hover:text-emerald-600 transition">Contact</a>
+                </div>
+
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-blue-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-slate-600">
+                        <i data-lucide="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-4 py-4 space-y-3">
+            <a href="#about" class="block text-slate-600 font-medium">About</a>
+            <a href="#solution" class="block text-slate-600 font-medium">Solution</a>
+            <a href="#features" class="block text-slate-600 font-medium">Features</a>
+            <a href="#contact" class="block text-slate-600 font-medium">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-emerald-400 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl lg:text-7xl font-extrabold text-slate-900 mb-6 tracking-tight">
+                Transitra <br>
+                <span class="gradient-text italic">Seamless Mobility Redefined</span>
+            </h1>
+            <p class="text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Empowering commuters in both rural and urban landscapes with real-time GPS tracking for every bus, including the private fleets that keep our world moving.
+            </p>
+            
+            <!-- Hero CTA Buttons -->
+            <div class="flex flex-col items-center gap-4">
+                <div class="flex flex-col sm:flex-row justify-center gap-4 w-full">
+                    <button id="notify-btn" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition transform hover:scale-105 shadow-xl shadow-blue-200 flex items-center justify-center gap-2">
+                        <i data-lucide="bell" class="w-5 h-5"></i> Notify Me
+                    </button>
+                <a href="https://youtu.be/LDQJpG2ZgAA?feature=shared" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   class="bg-white border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-bold text-lg hover:border-blue-300 transition flex items-center justify-center gap-2">
+    
+    <i data-lucide="play-circle" class="w-5 h-5 text-blue-500"></i> 
+    Watch Demo
+</a>
+                </div>
+                <div id="notify-success" class="mt-4 p-3 bg-emerald-100 text-emerald-700 rounded-lg text-sm font-semibold border border-emerald-200 flex items-center gap-2">
+                    <i data-lucide="check-circle-2" class="w-4 h-4"></i> Great! We'll notify you when we launch.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white fade-in-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-blue-600 font-bold tracking-widest text-sm uppercase">The Vision</span>
+                    <h2 class="text-3xl lg:text-4xl font-bold mt-4 mb-6">Bridging the Gap in Public Transport</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed mb-6">
+                        Transitra isn't just another tracking app; it's a unified ecosystem. We noticed that while city metros have tracking, rural commuters and private bus users are left in the dark. 
+                    </p>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        We connect passengers, drivers, and fleet owners through a single, lightweight platform optimized for even the lowest internet speeds.
+                    </p>
+                </div>
+                <div class="bg-slate-100 rounded-3xl p-8 aspect-video flex items-center justify-center relative overflow-hidden border border-slate-200 shadow-inner">
+                    <i data-lucide="map-pin" class="w-24 h-24 text-emerald-500/50 absolute -top-4 -right-4 animate-pulse"></i>
+                    <div class="text-center">
+                        <div class="bg-white p-6 rounded-2xl shadow-xl inline-block mb-4">
+                            <i data-lucide="bus-front" class="w-12 h-12 text-blue-600"></i>
+                        </div>
+                        <p class="font-bold text-slate-800">Unified Rural & Urban Tracking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-20 bg-slate-900 text-white fade-in-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold">The Challenges We Solve</h2>
+                <div class="h-1.5 w-20 bg-emerald-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="p-6 rounded-2xl border border-white/10 hover:bg-white/5 transition">
+                    <i data-lucide="clock" class="w-10 h-10 text-red-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Unreliable Timing</h3>
+                    <p class="text-slate-400 text-sm">Commuters wait hours without knowing if the next bus is coming or has already passed.</p>
+                </div>
+                <div class="p-6 rounded-2xl border border-white/10 hover:bg-white/5 transition">
+                    <i data-lucide="navigation-off" class="w-10 h-10 text-red-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Zero Visibility</h3>
+                    <p class="text-slate-400 text-sm">No live tracking means zero control over travel planning and increased frustration.</p>
+                </div>
+                <div class="p-6 rounded-2xl border border-white/10 hover:bg-white/5 transition">
+                    <i data-lucide="map" class="w-10 h-10 text-red-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Rural Neglect</h3>
+                    <p class="text-slate-400 text-sm">Villages are often left out of modern digital transport infrastructure mapping.</p>
+                </div>
+                <div class="p-6 rounded-2xl border border-white/10 hover:bg-white/5 transition">
+                    <i data-lucide="lock" class="w-10 h-10 text-red-400 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-2">Private Fleet Gap</h3>
+                    <p class="text-slate-400 text-sm">Private buses, the backbone of many regions, are rarely integrated into tracking systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="py-20 bg-white overflow-hidden fade-in-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold">How Transitra Works</h2>
+                <p class="text-slate-600 mt-4">A simple 4-step ecosystem for everyone.</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-10">
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl">1</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Owner Registration</h4>
+                            <p class="text-slate-600">Bus owners register their fleet and assign unique IDs to each vehicle.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-bold text-xl">2</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Trip Initiation</h4>
+                            <p class="text-slate-600">The Driver/Conductor starts the trip on the app selecting the designated route.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold text-xl">3</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Live Telemetry</h4>
+                            <p class="text-slate-600">The device sends GPS data securely to our cloud at optimized intervals.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-bold text-xl">4</div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">User Tracking</h4>
+                            <p class="text-slate-600">Commuters track the bus on a map with real-time ETA updates.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-50 to-emerald-50 rounded-full blur-2xl"></div>
+                    <div class="relative bg-white p-4 rounded-3xl shadow-2xl border border-slate-100 max-w-sm mx-auto">
+                        <!-- Mockup Map UI -->
+                        <div class="bg-slate-50 h-96 rounded-2xl p-4 overflow-hidden relative">
+                            <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 20px 20px;"></div>
+                            <div class="absolute top-1/2 left-1/4 w-32 h-1 bg-blue-400 rounded-full -rotate-45"></div>
+                            <div class="absolute top-1/2 left-1/2 w-4 h-4 bg-emerald-500 rounded-full border-4 border-white shadow-lg animate-bounce"></div>
+                            <div class="bg-white absolute bottom-4 left-4 right-4 p-4 rounded-xl shadow-lg border border-slate-100">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="text-xs text-slate-400 font-bold uppercase tracking-wider">Bus KL-07-2024</p>
+                                        <p class="font-bold text-slate-800">5 mins away</p>
+                                    </div>
+                                    <i data-lucide="navigation" class="text-blue-500 w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-slate-50 fade-in-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold">Powerful Features</h2>
+                <p class="text-slate-600 mt-4">Built for efficiency, safety, and scale.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 card-hover transition shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="radio" class="text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Live GPS Tracking</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Pinpoint accuracy for both city streets and winding rural roads.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 card-hover transition shadow-sm">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="search" class="text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Smart Route Search</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Search via stops, bus names, or destination to find the best route instantly.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 card-hover transition shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Multi-User Dashboard</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Tailored interfaces for Owners, Drivers, Conductors, and regular Users.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 card-hover transition shadow-sm">
+                    <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="alert-triangle" class="text-orange-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Emergency System</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">One-tap SOS for drivers to alert authorities and owners during breakdowns or emergencies.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 card-hover transition shadow-sm">
+                    <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="wifi-off" class="text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Low Bandwidth Mode</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Proprietary data compression ensures tracking works even on 2G networks.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-100 card-hover transition shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Public/Private Mix</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">A unified database showing both state transport and private carriers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Scope -->
+    <section class="py-20 bg-blue-600 text-white fade-in-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">The Future of Transitra</h2>
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <i data-lucide="cpu" class="flex-shrink-0 w-6 h-6 text-emerald-300"></i>
+                            <div>
+                                <h4 class="text-lg font-bold">AI Breakdown Prediction</h4>
+                                <p class="text-blue-100 text-sm">Machine learning models to predict route delays and vehicle maintenance needs before they happen.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <i data-lucide="headset" class="flex-shrink-0 w-6 h-6 text-emerald-300"></i>
+                            <div>
+                                <h4 class="text-lg font-bold">24/7 Global Support</h4>
+                                <p class="text-blue-100 text-sm">A centralized command center to assist drivers and passengers in real-time across the country.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <i data-lucide="zap" class="flex-shrink-0 w-6 h-6 text-emerald-300"></i>
+                            <div>
+                                <h4 class="text-lg font-bold">Green Tech Integration</h4>
+                                <p class="text-blue-100 text-sm">Specialized analytics for electric and solar-powered buses to manage range and charging status.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hidden lg:flex justify-end">
+                    <i data-lucide="rocket" class="w-64 h-64 text-white/20 animate-pulse"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator Section -->
+    <section class="py-20 bg-white fade-in-section">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="mb-8">
+                <div class="w-32 h-32 bg-slate-200 rounded-full mx-auto overflow-hidden border-4 border-emerald-500 shadow-xl">
+                    <div class="w-full h-full flex items-center justify-center text-slate-400 bg-slate-100">
+                        <i data-lucide="user" class="w-16 h-16"></i>
+                    </div>
+                </div>
+            </div>
+            <h2 class="text-3xl font-bold mb-2">Anandhu</h2>
+            <p class="text-blue-600 font-semibold mb-6">Founder & Lead Developer</p>
+            <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                "As a student developer, I saw the daily struggle of commuters in my hometown waiting for buses without knowing when--or if--they would arrive. Transitra is my attempt to bridge that technology gap, ensuring that every passenger, regardless of their location, has access to smart mobility tools."
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-slate-400 hover:text-blue-600 transition"><i data-lucide="github"></i></a>
+                <a href="#" class="text-slate-400 hover:text-blue-600 transition"><i data-lucide="linkedin"></i></a>
+                <a href="#" class="text-slate-400 hover:text-blue-600 transition"><i data-lucide="twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-50 fade-in-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100">
+                <div class="grid md:grid-cols-2">
+                    <div class="p-10 lg:p-16 bg-blue-600 text-white">
+                        <h2 class="text-3xl font-bold mb-6">Get in Touch</h2>
+                        <p class="mb-8 text-blue-100">Ready to transform your fleet or have questions? Our team is ready to help.</p>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-4">
+                                <i data-lucide="mail" class="w-6 h-6 text-emerald-400"></i>
+                                <span>transitraofficial@gmail.com</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i data-lucide="phone" class="w-6 h-6 text-emerald-400"></i>
+                                <span>nill</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-emerald-400"></i>
+                                <span>Kerala, India</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-10 lg:p-16">
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Name</label>
+                                <input type="text" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Email</label>
+                                <input type="email" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="john@example.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Message</label>
+                                <textarea rows="4" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tell us about your fleet..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-500 text-white font-bold py-4 rounded-xl hover:bg-emerald-600 transition shadow-lg shadow-emerald-200 mt-4">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="bus" class="text-emerald-500 w-6 h-6"></i>
+                    <span class="text-xl font-bold tracking-tight text-slate-800">Transitra</span>
+                </div>
+                <div class="text-slate-500 text-sm">
+                    © 2024 Transitra. All rights reserved. Designed with ❤️ by Anandhu.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-slate-600 transition">Privacy Policy</a>
+                    <a href="#" class="text-slate-400 hover:text-slate-600 transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Notify Me Logic
+        const notifyBtn = document.getElementById('notify-btn');
+        const notifySuccess = document.getElementById('notify-success');
+        notifyBtn.addEventListener('click', () => {
+            notifyBtn.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i> Added';
+            notifyBtn.classList.replace('bg-blue-600', 'bg-slate-700');
+            notifySuccess.style.display = 'flex';
+            lucide.createIcons();
+            // In a real app, you would prompt for an email or use an auth state here
+        });
+
+        // Fade in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+        // Contact Form
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = "Sent!";
+            btn.classList.add('bg-blue-600');
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-blue-600');
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
+
+```
